@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://6sfxdqil03wv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sl1em"]
+albedo_color = Color(0.352941, 0.352941, 0.352941, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qmp3s"]
+albedo_color = Color(0.352941, 0.352941, 0.352941, 1)
+
+[node name="CornerPiece" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 0)
+size = Vector3(2, 3, 0.2)
+material = SubResource("StandardMaterial3D_sl1em")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 1)
+size = Vector3(0.2, 3, 2)
+material = SubResource("StandardMaterial3D_qmp3s")
