@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://6sfxdqil03wv"]
+[gd_scene format=3 uid="uid://6sfxdqil03wv"]
+
+[ext_resource type="ArrayMesh" uid="uid://dx511o16joaqa" path="res://assets/meshes/corner_piece_mesh.tres" id="1_qmp3s"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sl1em"]
 albedo_color = Color(0.352941, 0.352941, 0.352941, 1)
@@ -6,14 +8,35 @@ albedo_color = Color(0.352941, 0.352941, 0.352941, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qmp3s"]
 albedo_color = Color(0.352941, 0.352941, 0.352941, 1)
 
-[node name="CornerPiece" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_qmp3s"]
+size = Vector3(1, 3, 0.2)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 0)
-size = Vector3(2, 3, 0.2)
+[sub_resource type="BoxShape3D" id="BoxShape3D_2v5g0"]
+size = Vector3(0.2, 3, 1)
+
+[node name="CornerPiece" type="Node3D" unique_id=220706356]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1426755652]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1706301684]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, 0)
+size = Vector3(1, 3, 0.2)
 material = SubResource("StandardMaterial3D_sl1em")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 1)
-size = Vector3(0.2, 3, 2)
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1376838404]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
+size = Vector3(0.2, 3, 1)
 material = SubResource("StandardMaterial3D_qmp3s")
+
+[node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="." unique_id=1814529157]
+mesh = ExtResource("1_qmp3s")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=753951842]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=2067215326]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, 0)
+shape = SubResource("BoxShape3D_qmp3s")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=2130927760]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
+shape = SubResource("BoxShape3D_2v5g0")

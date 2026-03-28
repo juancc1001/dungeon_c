@@ -1,11 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://1wbw6delnnb"]
+[gd_scene format=3 uid="uid://1wbw6delnnb"]
+
+[ext_resource type="ArrayMesh" uid="uid://dml7m5rsjxtuy" path="res://assets/meshes/wall_segment_mesh.tres" id="1_7ommp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2083t"]
 albedo_color = Color(0.352941, 0.352941, 0.352941, 1)
 
-[node name="WallSegment" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_7ommp"]
+size = Vector3(1, 3, 0.2)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
-size = Vector3(2, 3, 0.2)
+[node name="WallSegment" type="Node3D" unique_id=1748529024]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=2136608968]
+size = Vector3(1, 3, 0.2)
 material = SubResource("StandardMaterial3D_2083t")
+
+[node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="." unique_id=780972636]
+mesh = ExtResource("1_7ommp")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=930936038]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1389778107]
+shape = SubResource("BoxShape3D_7ommp")

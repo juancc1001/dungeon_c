@@ -4,10 +4,11 @@ extends CharacterBody3D
 @export var mouse_sensitivity := 0.002
 @export var max_health := 100
 var health: int
+var inventory := {}
 
 @onready var camera := $Camera3D
 @onready var raycast := $Camera3D/RayCast3D
-@onready var health_bar := $CanvasLayer/Control/ProgressBar
+@onready var health_bar := $CanvasLayer/Control/NinePatchRect/ProgressBar
 @onready var anim_player := $AnimationPlayer
 
 func _ready():
@@ -32,13 +33,13 @@ func _physics_process(delta):
 	var input_dir := Vector3.ZERO
 	
 	if Input.is_action_pressed("ui_up"):
-		input_dir -= transform.basis.z
-	if Input.is_action_pressed("ui_down"):
 		input_dir += transform.basis.z
+	if Input.is_action_pressed("ui_down"):
+		input_dir -= transform.basis.z
 	if Input.is_action_pressed("ui_left"):
-		input_dir -= transform.basis.x
-	if Input.is_action_pressed("ui_right"):
 		input_dir += transform.basis.x
+	if Input.is_action_pressed("ui_right"):
+		input_dir -= transform.basis.x
 	
 	input_dir = input_dir.normalized()
 	velocity.x = input_dir.x * speed
@@ -64,6 +65,18 @@ func take_damage(amount):
 	health_bar.value = health
 	if health <= 0:
 		die()
+
+func add_item(item_name: String, amount: int):
+	if inventory.has(item_name):
+		inventory[item_name] += amount
+	else:
+		inventory[item_name] = amount
+	print("Recogido: ", item_name, " x", amount)
+
+func heal(amount: int):
+	health = min(health + amount, max_health)
+	health_bar.value = health
+	print("Vida: ", health)
 
 func die():
 	print("Game Over")

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dmbcblqdwvh1p"]
+
+[ext_resource type="Script" uid="uid://bfmh8wn5t0vef" path="res://scripts/pickup_base.gd" id="1_xb0nv"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_tpurw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tpurw"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_xb0nv"]
+material = SubResource("StandardMaterial3D_tpurw")
+
+[node name="PickupBase" type="Node3D" unique_id=805259805]
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1152725858]
+script = ExtResource("1_xb0nv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=2043033875]
+shape = SubResource("SphereShape3D_tpurw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D" unique_id=191812426]
+mesh = SubResource("SphereMesh_xb0nv")

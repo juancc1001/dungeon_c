@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bih1x0mqm8i3"]
+
+[ext_resource type="PackedScene" uid="uid://dmbcblqdwvh1p" path="res://scenes/entities/pickup_base.tscn" id="1_mi0co"]
+[ext_resource type="Script" uid="uid://njvpergevecr" path="res://scripts/pickups scripts/pickup_health.gd" id="2_6d24a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6d24a"]
+albedo_color = Color(0.26666668, 1, 0.26666668, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_yshkq"]
+material = SubResource("StandardMaterial3D_6d24a")
+radius = 0.125
+height = 0.25
+
+[node name="PickupBase" unique_id=805259805 instance=ExtResource("1_mi0co")]
+
+[node name="Area3D" parent="." index="0" unique_id=1152725858]
+script = ExtResource("2_6d24a")
+heal_amount = 5
+
+[node name="MeshInstance3D" parent="Area3D" index="1" unique_id=191812426]
+mesh = SubResource("SphereMesh_yshkq")

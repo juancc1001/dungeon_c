@@ -1,12 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://cghj32tbdwfh4"]
+[gd_scene format=3 uid="uid://cghj32tbdwfh4"]
 
 [ext_resource type="Script" uid="uid://hio512rwvowc" path="res://scripts/enemy_ai.gd" id="1_1rga0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hvt7i"]
-size = Vector3(1, 1.5, 1)
+size = Vector3(0.8, 1.5, 0.8)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_hvt7i"]
-radius = 10.0
+radius = 15.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hvt7i"]
 albedo_color = Color(0.8, 0.2, 0.2, 1)
@@ -15,21 +15,23 @@ albedo_color = Color(0.8, 0.2, 0.2, 1)
 material = SubResource("StandardMaterial3D_hvt7i")
 size = Vector3(0.8, 1.5, 0.8)
 
-[node name="EnemyBasic" type="Node3D"]
+[node name="EnemyBasic" type="Node3D" unique_id=952927664]
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1660788211]
 script = ExtResource("1_1rga0")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=262066258]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 shape = SubResource("BoxShape3D_hvt7i")
 
-[node name="Area3D" type="Area3D" parent="CharacterBody3D"]
+[node name="Area3D" type="Area3D" parent="CharacterBody3D" unique_id=1691978292]
 collision_layer = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/Area3D" unique_id=2018714888]
 shape = SubResource("SphereShape3D_hvt7i")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=572815555]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 mesh = SubResource("BoxMesh_hvt7i")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="CharacterBody3D" unique_id=1739855089]

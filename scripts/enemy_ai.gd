@@ -1,7 +1,7 @@
 extends CharacterBody3D
 class_name EnemyBase
 
-@export var speed := 1.5
+@export var speed := 2.5
 @export var health := 20
 @export var damage := 5
 
@@ -10,6 +10,7 @@ var attack_timer := 0.0
 var can_attack := true
 
 @onready var detection_area := $Area3D
+@onready var nav_agent := $NavigationAgent3D
 
 func _ready():
 	detection_area.body_entered.connect(_on_body_entered)
@@ -25,13 +26,16 @@ func _on_body_exited(body):
 
 func _physics_process(delta):
 	if target:
-		var direction = (target.global_position - global_position).normalized()
-		direction.y = 0
-		velocity.x = direction.x * speed
-		velocity.z = direction.z * speed
-		
-		look_at(target.global_position)
-		rotation.x = 0
+		nav_agent.target_position = target.global_position
+		if not nav_agent.is_navigation_finished():
+			var next_pos = nav_agent.get_next_path_position()
+			var direction = (next_pos - global_position).normalized()
+			direction.y = 0
+			velocity.x = direction.x * speed
+			velocity.z = direction.z * speed
+			
+			look_at(next_pos)
+			rotation.x = 0
 		
 		if not can_attack:
 			attack_timer -= delta

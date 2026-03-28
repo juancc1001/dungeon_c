@@ -1,0 +1,28 @@
+[gd_resource type="MeshLibrary" format=3 uid="uid://b60gfrixkvr2h"]
+
+[ext_resource type="ArrayMesh" uid="uid://b4n70sqfjice6" path="res://assets/meshes/floor_tile_mesh.tres" id="1_floor"]
+[ext_resource type="ArrayMesh" uid="uid://dml7m5rsjxtuy" path="res://assets/meshes/wall_segment_mesh.tres" id="2_wall"]
+[ext_resource type="ArrayMesh" uid="uid://dx511o16joaqa" path="res://assets/meshes/corner_piece_mesh.tres" id="3_corner"]
+
+[resource]
+item/0/name = "floor_tile"
+item/0/mesh = ExtResource("1_floor")
+item/0/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+item/0/mesh_cast_shadow = 1
+item/0/shapes = []
+item/0/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/0/navigation_layers = 1
+item/1/name = "wall_segment"
+item/1/mesh = ExtResource("2_wall")
+item/1/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/1/mesh_cast_shadow = 1
+item/1/shapes = []
+item/1/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/1/navigation_layers = 1
+item/2/name = "corner_piece"
+item/2/mesh = ExtResource("3_corner")
+item/2/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, -0.5)
+item/2/mesh_cast_shadow = 1
+item/2/shapes = []
+item/2/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/2/navigation_layers = 1
