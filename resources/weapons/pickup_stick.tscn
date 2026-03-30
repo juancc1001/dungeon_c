@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://dp1odcilekjao"]
+
+[ext_resource type="PackedScene" uid="uid://dmbcblqdwvh1p" path="res://scenes/entities/pickup_base.tscn" id="1_base"]
+[ext_resource type="Script" uid="uid://pickup_weapon_script" path="res://scripts/pickups scripts/pickup_weapon.gd" id="2_weapon"]
+[ext_resource type="Resource" uid="uid://ndbk35xlex8c" path="res://resources/weapons/stick.tres" id="3_item"]
+
+[node name="PickupStick" instance=ExtResource("1_base")]
+
+[node name="Area3D" parent="." index="0" unique_id=1152725858]
+script = ExtResource("2_weapon")
+item_data = ExtResource("3_item")

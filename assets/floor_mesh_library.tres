@@ -3,13 +3,13 @@
 [ext_resource type="ArrayMesh" uid="uid://b4n70sqfjice6" path="res://assets/meshes/floor_tile_mesh.tres" id="1_floor"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_floor"]
-size = Vector3(1, 0.1, 1)
+size = Vector3(1.05, 0.1, 1.05)
 
 [resource]
 item/0/name = "floor_tile"
 item/0/mesh = ExtResource("1_floor")
 item/0/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
 item/0/mesh_cast_shadow = 1
-item/0/shapes = [SubResource("BoxShape3D_floor"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.45, 0.5)]
+item/0/shapes = [SubResource("BoxShape3D_floor"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.45, 0)]
 item/0/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-item/0/navigation_layers = 1
+item/0/navigation_layers = 15

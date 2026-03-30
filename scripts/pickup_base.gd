@@ -1,7 +1,7 @@
 extends Area3D
 class_name PickupBase
 
-@export var pickup_name := "item"
+@export var item_data: ItemData = null
 @export var quantity := 1
 
 var player_in_range := false
@@ -21,8 +21,8 @@ func _on_body_entered(body):
 		player_ref = body
 	
 func collect(body):
-	if body.has_method("add_item"):
-		body.add_item(pickup_name, quantity)
+	if body.has_method("add_item") and item_data:
+		body.add_item(item_data, quantity)
 	pickup_effect()
 	queue_free()
 	

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dy71qtajxl4gc"]
+
+[ext_resource type="Script" uid="uid://b0xnyabxvx22n" path="res://scripts/spawn_scripts/span_manager.gd" id="1_pbvn4"]
+
+[node name="SpawnManager" type="Node" unique_id=853916379]
+script = ExtResource("1_pbvn4")

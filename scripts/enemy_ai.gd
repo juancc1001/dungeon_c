@@ -17,7 +17,7 @@ func _ready():
 	detection_area.body_exited.connect(_on_body_exited)
 
 func _on_body_entered(body):
-	if body is CharacterBody3D and body != self:
+	if body.is_in_group("player"):
 		target = body
 
 func _on_body_exited(body):

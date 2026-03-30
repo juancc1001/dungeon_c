@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://ndbk35xlex8c"]
+
+[ext_resource type="Script" uid="uid://dpeyaynwexcbf" path="res://scripts/item_data.gd" id="1_cy5ge"]
+[ext_resource type="Texture2D" uid="uid://b72ypjaf7xpxt" path="res://assets/icons/stick.png" id="1_n8tht"]
+[ext_resource type="PackedScene" uid="uid://tj4dobgy1mqu" path="res://scenes/entities/weapon_node.tscn" id="3_6ofqs"]
+
+[resource]
+script = ExtResource("1_cy5ge")
+item_name = "Stick"
+icon = ExtResource("1_n8tht")
+description = "un palo multiuso"
+weapon_scene = ExtResource("3_6ofqs")
+metadata/_custom_type_script = "uid://dpeyaynwexcbf"
