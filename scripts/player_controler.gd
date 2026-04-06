@@ -99,6 +99,8 @@ func attack():
 	if current_weapon.is_attacking:
 		return
 	current_weapon.attack()
+	if current_weapon.is_ranged:
+		return
 	if raycast.is_colliding():
 		var target = raycast.get_collider()
 		if target.has_method("take_damage"):

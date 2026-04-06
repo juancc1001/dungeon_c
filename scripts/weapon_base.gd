@@ -3,6 +3,10 @@ class_name WeaponBase
 
 @export var damage := 10
 @export var attack_duration := 0.25
+@export var is_ranged := false
+
+func _ready():
+	pass
 
 var is_attacking := false
 
