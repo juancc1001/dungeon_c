@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://sdfeouqmnmtt"]
+
+[ext_resource type="Script" uid="uid://dmsoqbdi7payl" path="res://scripts/damage_number.gd" id="1_08s2c"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dmgnum"]
+font_size = 20
+font_color = Color(1, 0.2, 0.2, 1)
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[node name="DamageNumber" type="CanvasLayer"]
+script = ExtResource("1_08s2c")
+
+[node name="Label" type="Label" parent="."]
+label_settings = SubResource("LabelSettings_dmgnum")
+text = ""

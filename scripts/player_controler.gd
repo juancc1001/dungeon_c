@@ -17,6 +17,7 @@ var inventory := {}
 var has_weapon := false
 var current_weapon: Node3D = null
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
+var crosshair: Control = null
 
 @onready var camera := $Camera3D
 @onready var raycast := $Camera3D/RayCast3D
@@ -30,6 +31,21 @@ func _ready():
 	stamina = max_stamina
 	raycast.add_exception(self)
 	health_bar.value = health
+
+	var CrosshairScript = load("res://scripts/ui/crosshair.gd")
+	crosshair = CrosshairScript.new()
+	crosshair.anchor_left = 0.0
+	crosshair.anchor_top = 0.0
+	crosshair.anchor_right = 1.0
+	crosshair.anchor_bottom = 1.0
+	crosshair.offset_left = 0
+	crosshair.offset_top = 0
+	crosshair.offset_right = 0
+	crosshair.offset_bottom = 0
+	crosshair.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	crosshair.hide()
+	$CanvasLayer.add_child(crosshair)
+
 	if starting_weapon and starting_weapon.weapon_scene:
 		equip_weapon(starting_weapon)
 
@@ -88,6 +104,12 @@ func equip_weapon(item: ItemData):
 	camera.add_child(current_weapon)
 	has_weapon = true
 
+	if current_weapon.is_ranged:
+		crosshair.update_gap(current_weapon.crosshair_gap)
+		crosshair.show()
+	else:
+		crosshair.hide()
+
 	if not inventory.has(item):
 		add_item(item)
 	print("Arma equipada")
@@ -100,11 +122,12 @@ func attack():
 		return
 	current_weapon.attack()
 	if current_weapon.is_ranged:
+		crosshair.animate_spread(current_weapon.crosshair_spread, current_weapon.crosshair_spread_duration)
 		return
 	if raycast.is_colliding():
 		var target = raycast.get_collider()
 		if target.has_method("take_damage"):
-			target.take_damage(current_weapon.damage)
+			target.take_damage(current_weapon.damage, raycast.get_collision_point())
 	else:
 		print("no hit")
 

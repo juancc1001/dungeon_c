@@ -54,6 +54,101 @@ Para personalizar la animacion de ataque, crear un script que herede de `WeaponB
 
 ---
 
+## Cómo se relacionan los archivos
+
+Cuando el jugador recoge un arma, esta es la cadena completa:
+
+```
+pickup_gun.tscn          <- va en el suelo del nivel
+  └─ item_data: gun.tres (ItemData)
+	   ├─ item_name, icon, description, max_stack
+	   └─ weapon_scene: gun_node.tscn
+						  └─ script: gun.gd (Gun extends WeaponBase)
+							   └─ projectile_scene: projectile.tscn
+									└─ script: projectile.gd
+```
+
+**El ItemData es el nexo central.** El pickup lo usa para saber qué escena de arma instanciar. El arma lo usa para mostrarse en el inventario.
+
+Para armas cuerpo a cuerpo la cadena es más corta:
+
+```
+pickup_stick.tscn
+  └─ item_data: stick.tres
+	   └─ weapon_scene: weapon_node.tscn
+						  └─ script: weapon_base.gd (WeaponBase)
+```
+
+---
+
+## Crear un arma a distancia (ranged)
+
+En lugar de usar `weapon_base.gd`, crear un script que herede de `WeaponBase`:
+
+```gdscript
+extends WeaponBase
+class_name MiArmaRanged
+
+@export var projectile_scene: PackedScene
+@export var projectile_damage := 15
+@export var projectile_speed := 20.0
+
+func _ready():
+	is_ranged = true   # le dice al player que no use el raycast
+	super._ready()
+
+func attack():
+	if is_attacking:
+		return
+	is_attacking = true
+	# animación...
+	var tween = create_tween()
+	# ...
+	tween.finished.connect(func(): is_attacking = false)
+
+	var projectile = projectile_scene.instantiate()
+	var camera = get_viewport().get_camera_3d()
+	projectile.speed = projectile_speed
+	projectile.damage = projectile_damage
+	get_tree().root.add_child(projectile)   # importante: root, no camera
+	projectile.global_position = camera.global_position
+	projectile.global_rotation = camera.global_rotation
+```
+
+El proyectil (`projectile.tscn`) es un **Area3D** con:
+- `MeshInstance3D` (esfera pequeña u otro mesh)
+- `CollisionShape3D`
+- señal `body_entered` conectada a `_on_body_entered`
+
+```gdscript
+# projectile.gd
+extends Area3D
+
+var speed := 20.0
+var damage := 15
+var max_distance := 50.0
+var distance_traveled := 0.0
+
+func _ready():
+	body_entered.connect(_on_body_entered)
+
+func _physics_process(delta):
+	var movement = -transform.basis.z * speed * delta
+	position += movement
+	distance_traveled += movement.length()
+	if distance_traveled >= max_distance:
+		queue_free()
+
+func _on_body_entered(body):
+	if body.has_method("take_damage"):
+		body.take_damage(damage)
+	queue_free()
+```
+
+> **Importante:** el nodo raíz de `projectile.tscn` debe ser el `Area3D` directamente (no un `Node3D` contenedor), para que `projectile.speed` y `projectile.damage` funcionen al instanciar.
+
+---
+
 ## Crear un nuevo pickup de item (no arma)
 
 ### 1. ItemData (.tres)

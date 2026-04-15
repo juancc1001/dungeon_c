@@ -4,6 +4,9 @@ class_name WeaponBase
 @export var damage := 10
 @export var attack_duration := 0.25
 @export var is_ranged := false
+@export var crosshair_gap: float = 10.0
+@export var crosshair_spread: float = 8.0
+@export var crosshair_spread_duration: float = 0.25
 
 func _ready():
 	pass

@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[resource]
+render_priority = 1
+shading_mode = 2
+billboard_mode = 1
+albedo_color = Color(0.40169957, 0.8482101, 1.1551381e-06, 1)

@@ -1,7 +1,10 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://5jifaq343htg"]
 
 [ext_resource type="Script" uid="uid://dpeyaynwexcbf" path="res://scripts/item_data.gd" id="1_xgprj"]
+[ext_resource type="PackedScene" uid="uid://gs86d8lkxmfa" path="res://scenes/entities/weapons/gun_node.tscn" id="2_vkbjk"]
 
 [resource]
 script = ExtResource("1_xgprj")
+item_name = "Pistola"
+weapon_scene = ExtResource("2_vkbjk")
 metadata/_custom_type_script = "uid://dpeyaynwexcbf"

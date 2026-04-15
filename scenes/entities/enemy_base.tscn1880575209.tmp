@@ -17,7 +17,7 @@ material = SubResource("StandardMaterial3D_hvt7i")
 size = Vector3(0.8, 1.5, 0.8)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hbg"]
-shading_mode = 2
+no_depth_test = true
 albedo_color = Color(0.2, 0.2, 0.2, 1)
 billboard_mode = 1
 
@@ -27,11 +27,8 @@ size = Vector2(1, 0.1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hfill"]
 render_priority = 1
-shading_mode = 0
-disable_ambient_light = true
-disable_fog = true
-disable_specular_occlusion = true
-albedo_color = Color(0.40169957, 0.8482101, 1.1551381e-06, 1)
+no_depth_test = true
+albedo_color = Color(0.8, 0.15, 0.15, 1)
 billboard_mode = 1
 
 [sub_resource type="QuadMesh" id="QuadMesh_hfill"]
@@ -44,6 +41,9 @@ size = Vector2(1, 0.1)
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_1rga0")
+speed = null
+health = null
+damage = null
 damage_number_scene = ExtResource("2_ltmif")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=262066258]
@@ -70,5 +70,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
 mesh = SubResource("QuadMesh_hbg")
 
 [node name="Fill" type="MeshInstance3D" parent="CharacterBody3D/HealthBarRoot" unique_id=2056346919]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.001, 0)
 mesh = SubResource("QuadMesh_hfill")
