@@ -6,3 +6,4 @@ class_name ItemData
 @export var max_stack := 99
 @export var description := ""
 @export var weapon_scene: PackedScene = null
+@export var is_instant: bool = true

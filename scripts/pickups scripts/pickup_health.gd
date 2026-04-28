@@ -1,6 +1,6 @@
 extends PickupBase
 
-@export var heal_amount := 5
+@export var heal_amount := 15
 
 func collect(body):
 	if body.has_method("heal"):

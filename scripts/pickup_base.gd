@@ -21,7 +21,7 @@ func _on_body_entered(body):
 		player_ref = body
 	
 func collect(body):
-	if body.has_method("add_item") and item_data:
+	if body.has_method("add_item") and item_data and not item_data.is_instant:
 		body.add_item(item_data, quantity)
 	pickup_effect()
 	queue_free()

@@ -15,7 +15,7 @@ height = 0.25
 
 [node name="Area3D" parent="." index="0" unique_id=1152725858]
 script = ExtResource("2_6d24a")
-heal_amount = 5
+heal_amount = 15
 
 [node name="MeshInstance3D" parent="Area3D" index="1" unique_id=191812426]
 mesh = SubResource("SphereMesh_yshkq")

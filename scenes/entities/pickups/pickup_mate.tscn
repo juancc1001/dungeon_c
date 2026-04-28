@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cx5j1y0dm0y07"]
+
+[ext_resource type="PackedScene" uid="uid://dmbcblqdwvh1p" path="res://scenes/entities/pickup_base.tscn" id="1_1lq00"]
+[ext_resource type="Script" uid="uid://bh8arww8t07md" path="res://scripts/pickups scripts/pickup_mate.gd" id="2_4o83c"]
+[ext_resource type="Resource" uid="uid://b8aewy4xf3mjl" path="res://resources/items/pickup_mate.tres" id="3_xb8s4"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1lq00"]
+radius = 0.25
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4o83c"]
+albedo_color = Color(0, 0.18039216, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_xb8s4"]
+material = SubResource("StandardMaterial3D_4o83c")
+radius = 0.25
+height = 1.0
+
+[node name="PickupBase" unique_id=805259805 instance=ExtResource("1_1lq00")]
+
+[node name="Area3D" parent="." index="0" unique_id=1152725858]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+script = ExtResource("2_4o83c")
+speed_multiplier = 0.15
+item_data = ExtResource("3_xb8s4")
+
+[node name="CollisionShape3D" parent="Area3D" index="0" unique_id=2043033875]
+shape = SubResource("CapsuleShape3D_1lq00")
+
+[node name="MeshInstance3D" parent="Area3D" index="1" unique_id=191812426]
+mesh = SubResource("CapsuleMesh_xb8s4")

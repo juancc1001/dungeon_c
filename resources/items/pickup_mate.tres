@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b8aewy4xf3mjl"]
+
+[ext_resource type="Script" uid="uid://dpeyaynwexcbf" path="res://scripts/item_data.gd" id="1_3jw2g"]
+[ext_resource type="Texture2D" uid="uid://dgrx0cncvrnvq" path="res://assets/icons/mate.png" id="1_hmb8u"]
+
+[resource]
+script = ExtResource("1_3jw2g")
+item_name = "mate"
+icon = ExtResource("1_hmb8u")
+description = "un mate "
+is_instant = false
+metadata/_custom_type_script = "uid://dpeyaynwexcbf"
