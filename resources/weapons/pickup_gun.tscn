@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://sf26cinm4yx4"]
+
+[ext_resource type="PackedScene" uid="uid://dmbcblqdwvh1p" path="res://scenes/entities/pickup_base.tscn" id="1_7m3jw"]
+[ext_resource type="Script" uid="uid://b5yabmgvvj4a4" path="res://scripts/pickups scripts/pickup_weapon.gd" id="2_ptj28"]
+[ext_resource type="Resource" uid="uid://5jifaq343htg" path="res://resources/weapons/gun.tres" id="3_xdc56"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7m3jw"]
+size = Vector3(0.1, 0.3, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ptj28"]
+size = Vector3(0.1, 0.3, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ptj28"]
+size = Vector3(0.3, 0.3, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xdc56"]
+size = Vector3(0.4, 0.1, 0.1)
+
+[node name="PickupBase" unique_id=805259805 instance=ExtResource("1_7m3jw")]
+
+[node name="Area3D" parent="." index="0" unique_id=1152725858]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46873724, 0)
+script = ExtResource("2_ptj28")
+item_data = ExtResource("3_xdc56")
+
+[node name="CollisionShape3D" parent="Area3D" index="0" unique_id=2043033875]
+shape = SubResource("BoxShape3D_7m3jw")
+
+[node name="MeshInstance3D" parent="Area3D" index="1" unique_id=191812426]
+mesh = SubResource("BoxMesh_ptj28")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D" index="2" unique_id=139626719]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0, 0)
+shape = SubResource("BoxShape3D_ptj28")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Area3D" index="3" unique_id=1707694053]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.1, 0)
+mesh = SubResource("BoxMesh_xdc56")

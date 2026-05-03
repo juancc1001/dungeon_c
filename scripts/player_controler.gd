@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
-@export var speed := 6.5
-@export var sprint_speed := 5.0
+@export var speed := 4.25
+@export var sprint_speed := 5.5
 @export var mouse_sensitivity := 0.002
 @export var max_health := 100
 @export var max_stamina := 100.0
@@ -119,13 +119,15 @@ func _input(event):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 	if event.is_action_pressed("attack"):
-		attack()
+		if not DialogManager.is_active:
+			attack()
 
 	if event is InputEventKey and event.pressed and not event.echo:
 		match event.keycode:
 			KEY_1: switch_to_slot(0)
 			KEY_2: switch_to_slot(1)
 			KEY_3: switch_to_slot(2)
+			KEY_H: drop_weapon()
 
 	if event is InputEventMouseButton and event.pressed:
 		match event.button_index:
@@ -322,6 +324,19 @@ func update_inventory_ui():
 		panel.add_child(qty_label)
 
 		inventory_ui.add_child(panel)
+
+func drop_weapon():
+	var item = weapon_slots[active_slot]
+	if not item:
+		print("No hay arma en este slot")
+		return
+	weapon_slots[active_slot] = null
+	if current_weapon:
+		current_weapon.queue_free()
+		current_weapon = null
+	crosshair.hide()
+	update_weapon_slots_ui()
+	print("Soltaste: ", item.item_name)
 
 func heal(amount: int):
 	health = min(health + amount, max_health)

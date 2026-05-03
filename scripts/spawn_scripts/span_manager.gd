@@ -28,25 +28,27 @@ func spawn_initial():
 	spawn_weapons(max_weapons)
 
 func spawn_pickups(count: int):
+	for point in pickup_spawn_points:
+		if point.forced_scene and not point.used:
+			_spawn_at(point, point.forced_scene)
+
 	var available = pickup_spawn_points.filter(func(p): return not p.used)
 	available.shuffle()
-
 	for i in min(count, available.size()):
-		var point = available[i]
-		var pickup_scene = pickup_scenes.pick_random()
-		var pickup = pickup_scene.instantiate()
-		pickup.position = point.global_position
-		get_tree().current_scene.add_child(pickup)
-		point.used = true
+		_spawn_at(available[i], pickup_scenes.pick_random())
 
 func spawn_weapons(count: int):
+	for point in weapon_spawn_points:
+		if point.forced_scene and not point.used:
+			_spawn_at(point, point.forced_scene)
+
 	var available = weapon_spawn_points.filter(func(p): return not p.used)
 	available.shuffle()
-
 	for i in min(count, available.size()):
-		var point = available[i]
-		var weapon_scene = weapon_scenes.pick_random()
-		var weapon = weapon_scene.instantiate()
-		weapon.position = point.global_position
-		get_tree().current_scene.add_child(weapon)
-		point.used = true
+		_spawn_at(available[i], weapon_scenes.pick_random())
+
+func _spawn_at(point: SpawnPoint, scene: PackedScene):
+	var instance = scene.instantiate()
+	instance.position = point.global_position
+	get_tree().current_scene.add_child(instance)
+	point.used = true
