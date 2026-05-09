@@ -21,12 +21,24 @@ func _on_body_entered(body: Node3D):
 		return
 	var to_player = body.global_position - global_position
 	if to_player.dot(global_transform.basis.z) > 0:
-		return  # player viene del interior, está saliendo
+		_despawn_enemies()  # player saliendo: liberar enemigos para ahorrar recursos
+		return
 	if not respawns and _spawn_count > 0:
 		return
 	if not active_enemies.is_empty():
 		return
 	_spawn_enemies()
+
+func _despawn_enemies():
+	if active_enemies.is_empty():
+		return
+	print("DoorTrigger '", name, "': despawneando ", active_enemies.size(), " enemigos")
+	for enemy in active_enemies.duplicate():
+		if is_instance_valid(enemy):
+			enemy.queue_free()
+	active_enemies.clear()
+	if respawns:
+		_spawn_count = 0  # permite re-spawnear al volver a entrar
 
 func _spawn_enemies():
 	var to_spawn: Array
