@@ -250,7 +250,7 @@ func attack():
 	else:
 		print("no hit")
 
-func take_damage(amount):
+func take_damage(amount, position = 0):
 	health -= amount
 	health_bar.value = health
 	if health <= 0:
