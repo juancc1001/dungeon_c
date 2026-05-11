@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://dc8auhvggcidw"]
+
+[ext_resource type="Script" uid="uid://nmhm5weuiaq8" path="res://scripts/enemies/enemy_bomber.gd" id="1_bomber"]
+[ext_resource type="PackedScene" uid="uid://sdfeouqmnmtt" path="res://scenes/systems/damage_number.tscn" id="2_dmgnum"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b1"]
+size = Vector3(0.8, 1.2, 0.8)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_b1"]
+radius = 15.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b1"]
+albedo_color = Color(0.2, 0.7921569, 0, 1)
+emission_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_b1"]
+material = SubResource("StandardMaterial3D_b1")
+size = Vector3(0.8, 1.2, 0.8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hbg"]
+shading_mode = 2
+albedo_color = Color(0.2, 0.2, 0.2, 1)
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_hbg"]
+material = SubResource("StandardMaterial3D_hbg")
+size = Vector2(1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hfill"]
+render_priority = 1
+shading_mode = 0
+disable_ambient_light = true
+disable_fog = true
+disable_specular_occlusion = true
+albedo_color = Color(0.40169957, 0.8482101, 1.1551381e-06, 1)
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_hfill"]
+material = SubResource("StandardMaterial3D_hfill")
+size = Vector2(1, 0.1)
+
+[node name="EnemyBomber" type="Node3D" unique_id=49025665]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=800573282]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_bomber")
+speed = 3.5
+health = 15
+damage = 0
+damage_number_scene = ExtResource("2_dmgnum")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=2121676440]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+shape = SubResource("BoxShape3D_b1")
+
+[node name="Area3D" type="Area3D" parent="CharacterBody3D" unique_id=1941790113]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/Area3D" unique_id=1197642155]
+shape = SubResource("SphereShape3D_b1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=561306317]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+mesh = SubResource("BoxMesh_b1")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="CharacterBody3D" unique_id=114464967]
+
+[node name="HealthBarRoot" type="Node3D" parent="CharacterBody3D" unique_id=2033391520]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="BG" type="MeshInstance3D" parent="CharacterBody3D/HealthBarRoot" unique_id=993788894]
+mesh = SubResource("QuadMesh_hbg")
+
+[node name="Fill" type="MeshInstance3D" parent="CharacterBody3D/HealthBarRoot" unique_id=1940843695]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.001, 0)
+mesh = SubResource("QuadMesh_hfill")
