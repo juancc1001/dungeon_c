@@ -59,7 +59,8 @@ func _spawn_enemies():
 	print("DoorTrigger '", name, "': spawneando ", count, " enemigos")
 	for i in count:
 		var entry: EnemyEntry = to_spawn[i]
-		var enemy := entry.scene.instantiate() as Node3D
+		var scene_to_use: PackedScene = points[i].forced_scene if points[i].forced_scene else entry.scene
+		var enemy := scene_to_use.instantiate() as Node3D
 		enemy.global_position = points[i].global_position
 		get_tree().current_scene.add_child(enemy)
 		active_enemies.append(enemy)

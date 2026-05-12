@@ -34,6 +34,56 @@ script = ExtResource("9_m7i68")
 scene = ExtResource("5_6ess3")
 respawns = true
 
+[sub_resource type="Resource" id="Resource_eq25k"]
+script = ExtResource("9_m7i68")
+scene = ExtResource("5_6ess3")
+metadata/_custom_type_script = "uid://bx7qhcvcidw0h"
+
+[sub_resource type="Resource" id="Resource_qyh54"]
+script = ExtResource("9_m7i68")
+scene = ExtResource("5_6ess3")
+metadata/_custom_type_script = "uid://bx7qhcvcidw0h"
+
+[sub_resource type="Resource" id="Resource_j3gql"]
+script = ExtResource("9_m7i68")
+scene = ExtResource("5_6ess3")
+metadata/_custom_type_script = "uid://bx7qhcvcidw0h"
+
+[sub_resource type="Resource" id="Resource_ebfcm"]
+script = ExtResource("9_m7i68")
+scene = ExtResource("5_6ess3")
+metadata/_custom_type_script = "uid://bx7qhcvcidw0h"
+
+[sub_resource type="Resource" id="Resource_hkukw"]
+script = ExtResource("9_m7i68")
+scene = ExtResource("5_6ess3")
+metadata/_custom_type_script = "uid://bx7qhcvcidw0h"
+
+[sub_resource type="Resource" id="Resource_osrh5"]
+script = ExtResource("9_m7i68")
+scene = ExtResource("5_6ess3")
+metadata/_custom_type_script = "uid://bx7qhcvcidw0h"
+
+[sub_resource type="Resource" id="Resource_2mv2r"]
+script = ExtResource("9_m7i68")
+scene = ExtResource("5_6ess3")
+metadata/_custom_type_script = "uid://bx7qhcvcidw0h"
+
+[sub_resource type="Resource" id="Resource_kmgcj"]
+script = ExtResource("9_m7i68")
+scene = ExtResource("5_6ess3")
+metadata/_custom_type_script = "uid://bx7qhcvcidw0h"
+
+[sub_resource type="Resource" id="Resource_uedn5"]
+script = ExtResource("9_m7i68")
+scene = ExtResource("5_6ess3")
+metadata/_custom_type_script = "uid://bx7qhcvcidw0h"
+
+[sub_resource type="Resource" id="Resource_ru4oy"]
+script = ExtResource("9_m7i68")
+scene = ExtResource("5_6ess3")
+metadata/_custom_type_script = "uid://bx7qhcvcidw0h"
+
 [node name="DungeonTest" type="Node3D" unique_id=341328738]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=729409376]
@@ -88,8 +138,43 @@ forced_scene = ExtResource("7_8ufo1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.25, 11)
 
 [node name="SpawnPoint7" parent="." unique_id=1329257605 groups=["weapon_spawn"] instance=ExtResource("7_77cwn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0.3, 22)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0.3, 22)
 forced_scene = ExtResource("8_6sbo0")
+
+[node name="SpawnPoint8" parent="." unique_id=1448007726 groups=["enemy_spawn"] instance=ExtResource("7_77cwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 0.25, 19)
+forced_scene = ExtResource("13_eq25k")
+
+[node name="SpawnPoint14" parent="." unique_id=1709811973 groups=["enemy_spawn"] instance=ExtResource("7_77cwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 0.25, 24)
+forced_scene = ExtResource("13_eq25k")
+
+[node name="SpawnPoint15" parent="." unique_id=416527106 groups=["enemy_spawn"] instance=ExtResource("7_77cwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 0.25, 31)
+forced_scene = ExtResource("13_eq25k")
+
+[node name="SpawnPoint9" parent="." unique_id=2039421730 groups=["enemy_spawn"] instance=ExtResource("7_77cwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0.25, 24)
+
+[node name="SpawnPoint10" parent="." unique_id=1042511704 groups=["enemy_spawn"] instance=ExtResource("7_77cwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0.25, 25)
+
+[node name="SpawnPoint11" parent="." unique_id=5695862 groups=["enemy_spawn"] instance=ExtResource("7_77cwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0.25, 26)
+
+[node name="SpawnPoint12" parent="." unique_id=1697266226 groups=["enemy_spawn"] instance=ExtResource("7_77cwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0.25, 27)
+
+[node name="SpawnPoint13" parent="." unique_id=1030680824 groups=["enemy_spawn"] instance=ExtResource("7_77cwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0.25, 28)
+
+[node name="SpawnPoint16" parent="." unique_id=414077879 groups=["enemy_spawn"] instance=ExtResource("7_77cwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0.25, 28)
+forced_scene = ExtResource("12_bcp4n")
+
+[node name="SpawnPoint17" parent="." unique_id=2013365745 groups=["enemy_spawn"] instance=ExtResource("7_77cwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0.25, 24)
+forced_scene = ExtResource("12_bcp4n")
 
 [node name="DoorTrigger1" parent="." unique_id=1977908055 node_paths=PackedStringArray("spawn_points") instance=ExtResource("9_sdjhh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 17)
@@ -98,3 +183,8 @@ collision_mask = 1
 enemies = Array[ExtResource("9_m7i68")]([SubResource("Resource_m7i68"), SubResource("Resource_dl36o"), SubResource("Resource_6sbo0")])
 spawn_points = [NodePath("../SpawnPoint"), NodePath("../SpawnPoint2"), NodePath("../SpawnPoint3")]
 respawns = true
+
+[node name="DoorTrigger" parent="." unique_id=1385454942 node_paths=PackedStringArray("spawn_points") instance=ExtResource("9_sdjhh")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16, 0, 25)
+enemies = Array[ExtResource("9_m7i68")]([SubResource("Resource_eq25k"), SubResource("Resource_qyh54"), SubResource("Resource_j3gql"), SubResource("Resource_ebfcm"), SubResource("Resource_hkukw"), SubResource("Resource_osrh5"), SubResource("Resource_2mv2r"), SubResource("Resource_kmgcj"), SubResource("Resource_uedn5"), SubResource("Resource_ru4oy")])
+spawn_points = [NodePath("../SpawnPoint8"), NodePath("../SpawnPoint14"), NodePath("../SpawnPoint15"), NodePath("../SpawnPoint9"), NodePath("../SpawnPoint10"), NodePath("../SpawnPoint11"), NodePath("../SpawnPoint12"), NodePath("../SpawnPoint13"), NodePath("../SpawnPoint16"), NodePath("../SpawnPoint17")]
